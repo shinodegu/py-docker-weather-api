@@ -5,10 +5,12 @@ import requests
 
 api_key = os.getenv("API_KEY")
 
+BASE_URL = "https://api.weatherapi.com/v1/current.json"
+CITY = "Paris"
+
 
 def get_weather() -> None:
-    response = requests.get(f"https://api.weatherapi.com/"
-                            f"v1/current.json?key={api_key}&q=Paris&aqi=no")
+    response = requests.get(f"{BASE_URL}?key={api_key}&q={CITY}&aqi=no")
     data = response.json()
     city = data["location"]["name"]
     country = data["location"]["country"]
